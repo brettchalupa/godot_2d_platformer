@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4b2xucjtxgcf"]
+[gd_scene load_steps=8 format=3 uid="uid://4b2xucjtxgcf"]
 
+[ext_resource type="Script" path="res://level_2.gd" id="1_gy6ve"]
 [ext_resource type="Texture2D" uid="uid://cmyw7fmkbaox3" path="res://monochrome_tilemap_transparent.png" id="1_wi2ep"]
 [ext_resource type="PackedScene" uid="uid://cboi8hec4yf0c" path="res://player.tscn" id="2_ljyip"]
+[ext_resource type="PackedScene" uid="uid://clikcsot5ncta" path="res://door.tscn" id="3_osote"]
+[ext_resource type="PackedScene" uid="uid://dypev0qrj3e6s" path="res://gem.tscn" id="5_lp1yo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6issp"]
 resource_name = "Tilemap"
@@ -1335,6 +1338,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6issp")
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_gy6ve")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wfi5k")
@@ -1352,4 +1356,24 @@ text = "Level 2"
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_ljyip")]
-position = Vector2(346, 230)
+position = Vector2(360, 251)
+
+[node name="Door" parent="." instance=ExtResource("3_osote")]
+position = Vector2(336, 250)
+
+[node name="Label" type="Label" parent="Door"]
+offset_left = -24.0
+offset_top = -34.0
+offset_right = 30.0
+offset_bottom = -8.0
+text = "Level 1"
+
+[node name="Gems" type="Node" parent="."]
+
+[node name="Gem" parent="Gems" instance=ExtResource("5_lp1yo")]
+position = Vector2(432, 234)
+
+[node name="Gem2" parent="Gems" instance=ExtResource("5_lp1yo")]
+position = Vector2(496, 234)
+
+[connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]

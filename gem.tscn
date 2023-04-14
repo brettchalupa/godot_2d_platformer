@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dypev0qrj3e6s"]
+
+[ext_resource type="Texture2D" uid="uid://cmyw7fmkbaox3" path="res://monochrome_tilemap_transparent.png" id="1_5m8k5"]
+[ext_resource type="Script" path="res://gem.gd" id="1_606fa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_341ky"]
+size = Vector2(10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmvpb"]
+atlas = ExtResource("1_5m8k5")
+region = Rect2(34, 85, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhs42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmvpb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gem" type="Area2D"]
+script = ExtResource("1_606fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_341ky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bhs42")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
