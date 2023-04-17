@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cboi8hec4yf0c"]
+[gd_scene load_steps=11 format=3 uid="uid://cboi8hec4yf0c"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7msvu"]
 [ext_resource type="Texture2D" uid="uid://cmyw7fmkbaox3" path="res://monochrome_tilemap_transparent.png" id="2_erru1"]
+[ext_resource type="AudioStream" uid="uid://bwkldmy87gn66" path="res://jump.wav" id="3_brij0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usmjv"]
 atlas = ExtResource("2_erru1")
@@ -76,3 +77,7 @@ animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_eynex")
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_brij0")
+volume_db = -2.0

@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://4b2xucjtxgcf"]
+[gd_scene load_steps=10 format=3 uid="uid://4b2xucjtxgcf"]
 
-[ext_resource type="Script" path="res://level_2.gd" id="1_gy6ve"]
+[ext_resource type="Script" path="res://level.gd" id="1_37vva"]
 [ext_resource type="Texture2D" uid="uid://cmyw7fmkbaox3" path="res://monochrome_tilemap_transparent.png" id="1_wi2ep"]
 [ext_resource type="PackedScene" uid="uid://cboi8hec4yf0c" path="res://player.tscn" id="2_ljyip"]
 [ext_resource type="PackedScene" uid="uid://clikcsot5ncta" path="res://door.tscn" id="3_osote"]
+[ext_resource type="PackedScene" uid="uid://bdyp538fqygcq" path="res://hud.tscn" id="3_qapr3"]
 [ext_resource type="PackedScene" uid="uid://dypev0qrj3e6s" path="res://gem.tscn" id="5_lp1yo"]
+[ext_resource type="AudioStream" uid="uid://icmqlmr251kc" path="res://annoyingwaltz.wav" id="7_1ltcm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6issp"]
 resource_name = "Tilemap"
@@ -1338,28 +1340,22 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_6issp")
 
 [node name="Level2" type="Node2D"]
-script = ExtResource("1_gy6ve")
+script = ExtResource("1_37vva")
+level_num = 2
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wfi5k")
 format = 2
 layer_0/tile_data = PackedInt32Array(1048599, 524288, 4, 1048600, 524288, 4, 1048601, 524288, 4, 1048602, 524288, 4, 1048603, 524288, 4, 1048604, 524288, 4, 1048605, 524288, 4, 1048606, 524288, 4, 1048607, 524288, 4, 1048608, 524288, 4, 1048609, 524288, 4, 1048610, 524288, 4, 1048611, 524288, 4, 1114147, 524288, 4, 1179683, 524288, 4, 1179682, 524288, 4, 1179681, 524288, 4, 1179680, 524288, 4, 1179679, 524288, 4, 1179678, 524288, 4, 1179677, 524288, 4, 1179676, 524288, 4, 1114140, 524288, 4, 1114139, 524288, 4, 1114138, 524288, 4, 1114137, 524288, 4, 1114136, 524288, 4, 1114135, 524288, 4, 1114134, 524288, 4, 1114141, 524288, 4, 1114142, 524288, 4, 1114143, 524288, 4, 1114144, 524288, 4, 1114145, 524288, 4, 1114146, 524288, 4, 1179675, 524288, 4, 1179674, 524288, 4, 1179673, 524288, 4, 1179672, 524288, 4, 1179671, 524288, 4, 1179670, 524288, 4, 1048598, 524288, 4, 1048597, 524288, 4, 1048596, 524288, 4, 1048595, 524288, 4, 1114131, 524288, 4, 1114132, 524288, 4, 1114133, 524288, 4, 1179669, 524288, 4, 1179668, 524288, 4, 1179667, 524288, 4, 1179666, 524288, 4, 1114130, 524288, 4, 1048594, 524288, 4, 983058, 524288, 4, 917522, 524288, 4, 851986, 524288, 4, 1179684, 524288, 4, 1114148, 524288, 4, 1048612, 524288, 4, 983076, 524288, 4, 917540, 524288, 4, 852004, 524288, 4, 786450, 524288, 4)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 19.0
-offset_top = 10.0
-offset_right = 73.0
-offset_bottom = 36.0
-text = "Level 2"
-metadata/_edit_use_anchors_ = true
+[node name="HUD" parent="." instance=ExtResource("3_qapr3")]
 
 [node name="Player" parent="." instance=ExtResource("2_ljyip")]
 position = Vector2(360, 251)
 
 [node name="Door" parent="." instance=ExtResource("3_osote")]
 position = Vector2(336, 250)
+level = "res://level_1.tscn"
 
 [node name="Label" type="Label" parent="Door"]
 offset_left = -24.0
@@ -1376,4 +1372,9 @@ position = Vector2(432, 234)
 [node name="Gem2" parent="Gems" instance=ExtResource("5_lp1yo")]
 position = Vector2(496, 234)
 
-[connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1ltcm")
+volume_db = -5.0
+autoplay = true
+
+[connection signal="player_entered" from="Door" to="." method="_on_door_player_entered"]

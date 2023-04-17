@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dypev0qrj3e6s"]
+[gd_scene load_steps=7 format=3 uid="uid://dypev0qrj3e6s"]
 
 [ext_resource type="Texture2D" uid="uid://cmyw7fmkbaox3" path="res://monochrome_tilemap_transparent.png" id="1_5m8k5"]
 [ext_resource type="Script" path="res://gem.gd" id="1_606fa"]
+[ext_resource type="AudioStream" uid="uid://dxjgadwscnl7q" path="res://gem.wav" id="3_hfxuq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_341ky"]
 size = Vector2(10, 14)
@@ -30,4 +31,8 @@ shape = SubResource("RectangleShape2D_341ky")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bhs42")
 
+[node name="CollectedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hfxuq")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CollectedSfx" to="." method="_on_collected_sfx_finished"]

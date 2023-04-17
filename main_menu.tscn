@@ -21,4 +21,13 @@ offset_right = 607.0
 offset_bottom = 322.0
 text = "Start"
 
+[node name="Label" type="Label" parent="."]
+offset_left = 512.0
+offset_top = 520.0
+offset_right = 650.0
+offset_bottom = 572.0
+text = "Sprites by Kenney
+Music by Ted Kerr"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
