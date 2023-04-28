@@ -1,5 +1,7 @@
 # Godot 2D Platformer Starter Kit
 
+![Godot 2D Platformer Short](https://user-images.githubusercontent.com/928367/235163759-a4006cf2-a6b9-48d0-86c8-0efcaab9b9b1.gif)
+
 Complete 2D platformer template made in Godot 4 with three levels, music, sfx, and a main menu. Ready for you to take and make an awesome game with.
 
 - [🕹️ Play the Demo](https://brettchalupa.itch.io/godot-2d-platformer)
