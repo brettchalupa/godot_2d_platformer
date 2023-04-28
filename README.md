@@ -9,7 +9,8 @@ Complete 2D platformer template made in Godot 4 with three levels, music, sfx, a
 
 ## Credits
 
-- Template Code: Brett Chalupa (CC0, dedicated to public domain)
+- Template Code: [Brett Chalupa](https://www.brettchalupa.com) (CC0, dedicated to public domain)
 - Sprites: [1-Bit Platformer Pack by Kenney](https://kenney.nl/assets/1-bit-platformer-pack) (CC0)
 - Music: [Ted Kerr](https://opengameart.org/users/wolfgang) (CC-BY 4.0) - [8-Bit Theme](https://opengameart.org/content/8-bit-theme) & [8-Bit Quirky Waltz](https://opengameart.org/content/8-bit-quirky-waltz)
 Template for a complete, quick Godot 4 2D Platformer game
+- Sound Effects: [jsfxr](https://sfxr.me/)
